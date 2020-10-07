@@ -94,7 +94,10 @@ $ git remote add origin ${YOUR_URL}
 ```
 ** Replace ${YOUR_URL} with the gitlab project link from step 3.<br/><br/>
 ![Add origin](./img/homework/AddOrigin.png)
-
+```
+$ git pull origin master
+```
+** Pull gitlab README.md to your file.
 ### Upload Homework
 1. Look up the current status of git repository.<br/><br/>
 Enter following command:
