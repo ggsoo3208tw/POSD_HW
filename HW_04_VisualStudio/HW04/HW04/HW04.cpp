@@ -12,17 +12,18 @@ using namespace std;
 
 class Shape {
 public:
-    string _id, _color;
     Shape(string id) :_id(id) {};
     Shape(string id, string color) :_id(id), _color(color) {};
     virtual double area() const = 0;
     virtual double perimeter() const = 0;
     virtual string info() const = 0;  
-    virtual string id() const { return _id; };
+    virtual string id() const = 0;
     virtual string color() const { return _color; };
     virtual void addShape(Shape* shape) { throw (string)"Only compound shape can add shape!";  }; // throw std::string "Only compound shape can add shape!"
     virtual void deleteShapeById(std::string id) { throw (string)"Only compound shape can delete shape!"; }; // throw std::string "Only compound shape can delete shape!"
     virtual Shape* getShapeById(std::string id) { throw (string)"Only compound shape can get shape!"; }; // throw std::string "Only compound shape can get shape!"
+private:
+    string _id, _color;
 };
 
 class Rectangle : public Shape {
@@ -32,12 +33,15 @@ public:
 
         _width = width;
         _height = height;
+        _id = id;
     }
     Rectangle(string id, double width, double height, string color) :Shape(id,color){
         if (width < 0 || height < 0) throw (string)"That is not a Rectangle!";
 
         _width = width;
         _height = height;
+        _id = id;
+        _color = color;
     }
 
     double area() const {
@@ -53,8 +57,13 @@ public:
         sprintf_s(temporarilyArray, "Rectangle (%.3f, %.3f)", _height, _width);
         return string(temporarilyArray);
     }
+
+    string id() const {
+        return _id;
+    }
 private:
     double _width, _height;
+    string _id, _color;
 };
 
 class Ellipse : public Shape {
@@ -64,12 +73,15 @@ public:
 
         _semiMajorAxes = semiMajorAxes;
         _semiMinorAxes = semiMinorAxes;
+        _id = id;
     }
     Ellipse(string id, double semiMajorAxes, double semiMinorAxes, string color) :Shape(id, color) {
         if (semiMajorAxes < 0 || semiMinorAxes < 0) throw (string)"That is not Ellipse!";
 
         _semiMajorAxes = semiMajorAxes;
         _semiMinorAxes = semiMinorAxes;
+        _id = id;
+        _color = color;
     }
 
     double area() const {
@@ -85,8 +97,13 @@ public:
         sprintf_s(temporarilyArray, "Ellipse (%.3f, %.3f)", _semiMajorAxes, _semiMinorAxes);
         return string(temporarilyArray);
     }
+
+    string id() const {
+        return _id;
+    }
 private:
     double _semiMajorAxes, _semiMinorAxes;
+    string _id, _color;
 };
 
 class CompoundShape : public Shape {
@@ -94,6 +111,7 @@ public:
     CompoundShape(string id, vector<Shape*>* shapes):Shape(id) {
         if (shapes->size() < 2) throw (string)"This is not a compound shape!";
         _shapes = shapes;
+        _id = id;
     }
 
     double area() const {
@@ -130,7 +148,26 @@ public:
         _shapes->push_back(shape);
     }
 
+    string id() const {
+        for (vector<Shape*>::iterator it = _shapes->begin(); it != _shapes->end(); it++) {
+            cout << (*it)->id() << endl;
+            return (*it)->id();
+        }
+    }
+
     void deleteShape(string id) {
+        bool notId = true;
+        for (vector<Shape*>::iterator it = _shapes->begin(); it != _shapes->end(); it++) {
+            cout << (*it)->id() << endl;
+            cout << "-----" << endl;
+            if (!((*it)->id()).compare(id)) {
+                cout << "search id successful" << endl;
+                notId = false;
+            }
+        }   
+        if (notId) throw (string)"Expected delete shape but shape not found";
+
+        /*  //fun2
         bool noValue = true;
         vector<Shape*>* __shapes = new vector<Shape*>(0);
         __shapes->assign(_shapes->begin(), _shapes->end());
@@ -145,7 +182,8 @@ public:
             }
         }
         if (noValue) throw (string)"Expected delete shape but shape not found";
-        /*
+        */
+        /* // func1
         int count = 0;
         bool noValue = true;
         for (vector<Shape*>::iterator it = _shapes->begin(); it != _shapes->end(); it++,count++) {
@@ -163,6 +201,7 @@ public:
     }
 
     Shape* getShapeById(string id) {
+         //fun2
         bool noValue = true;
         vector<Shape*>* __shapes = new vector<Shape*>(0);
         __shapes->assign(_shapes->begin(), _shapes->end());
@@ -179,7 +218,8 @@ public:
             }
         }
         if (noValue) throw (string)"Expected get shape but shape not found";
-        /*
+        
+        /* //func1
         int count = 0;
         vector<Shape*>::iterator it = _shapes->begin();
         for (it; it != _shapes->end(); it++, count++) {
@@ -197,6 +237,7 @@ public:
     }
 private:
     vector<Shape*>* _shapes;
+    string _id;
 };
 
 int main(){
@@ -236,13 +277,14 @@ int main(){
     ((CompoundShape*)mbox2)->addShape(mbox);
     cout << "Compound Shape mbox2 Area = " << ((CompoundShape*)mbox2)->area() << endl;
     cout << "Compound Shape mbox2 Info = " << ((CompoundShape*)mbox2)->info() << endl;
-    //((CompoundShape*)mbox2)->deleteShape("1");
+/*
     try {
         ((CompoundShape*)mbox2)->deleteShape("3");
     }
     catch (string e) {
         cout << e << endl;
     }
+    */
     try {
         ((CompoundShape*)mbox2)->deleteShape("3");
     }
