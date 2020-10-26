@@ -1,0 +1,39 @@
+﻿  HW_05.cpp
+C:\Users\PlusUltra\Desktop\HW_05\HW_05\HW_05\compound_shape.h(24,1): error C2664: 'ShapeIterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>::ShapeIterator(ShapeIterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>> &&)': 無法將引數 1 從 'std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>>' 轉換為 'ForwardIterator'
+          with
+          [
+              _Ty=Shape *
+          ]
+          and
+          [
+              _Ty=Shape *
+          ]
+          and
+          [
+              ForwardIterator=std::_List_iterator<std::_List_val<std::_List_simple_types<Shape *>>>
+          ]
+C:\Users\PlusUltra\Desktop\HW_05\HW_05\HW_05\compound_shape.h(24,79): message : 沒有可以執行此轉換的使用者定義轉換運算子或無法呼叫運算子
+C:\Users\PlusUltra\Desktop\HW_05\HW_05\HW_05\shape_iterator.h(11,5): message : 請參閱 'ShapeIterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>::ShapeIterator' 的宣告
+          with
+          [
+              _Ty=Shape *
+          ]
+C:\Users\PlusUltra\Desktop\HW_05\HW_05\HW_05\compound_shape.h(33,1): error C2664: 'ShapeIterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>::ShapeIterator(ShapeIterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>> &&)': 無法將引數 1 從 'std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>>' 轉換為 'ForwardIterator'
+          with
+          [
+              _Ty=Shape *
+          ]
+          and
+          [
+              _Ty=Shape *
+          ]
+          and
+          [
+              ForwardIterator=std::_List_iterator<std::_List_val<std::_List_simple_types<Shape *>>>
+          ]
+C:\Users\PlusUltra\Desktop\HW_05\HW_05\HW_05\compound_shape.h(33,79): message : 沒有可以執行此轉換的使用者定義轉換運算子或無法呼叫運算子
+C:\Users\PlusUltra\Desktop\HW_05\HW_05\HW_05\shape_iterator.h(11,5): message : 請參閱 'ShapeIterator<std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>>::ShapeIterator' 的宣告
+          with
+          [
+              _Ty=Shape *
+          ]
