@@ -27,9 +27,8 @@ public:
 
     void updatePath(string path) {
       _path = path;
-      for (Iterator* it = new NodeIterator<list<Node*>::iterator>(_nodes.begin(), _nodes.end()); !it->isDone(); it->next()) {
+      for (Iterator* it = createIterator(); !it->isDone(); it->next())
         it->currentItem()->updatePath(route());
-      }
     }
 
     void addNode(Node* node) {
@@ -39,50 +38,26 @@ public:
 
     double size() const {
       double totalSize = 0.0;
-      Iterator *it = new NodeIterator<list<Node*>::const_iterator>(_nodes.begin(), _nodes.end());
-      //cout << "a" << endl;
-      for(it->first();!it->isDone();it->next()){
+      for(Iterator *it = createIterator();!it->isDone();it->next()){
           totalSize += it->currentItem()->size();
-          //cout << "b" <<endl;
       }
       return totalSize;
     }
 
     Node* getNodeById(string id) const {
-      Iterator* it = new NodeIterator<list<Node*>::const_iterator>(_nodes.begin(), _nodes.end());
-      for (it->first(); !it->isDone(); it->next()) {
-            if (it->currentItem()->id() == id) {
-                return it->currentItem();
-            }
-            if (!it->currentItem()->createIterator()->isDone()) {
-                try {
-                    return it->currentItem()->getNodeById(id);
-                }catch (string e) {
-                    //throw string("Expected get node but node not found");
-                }
-            }
-        }
-        throw string("Expected get node but node not found.");
+      for (Iterator* it = createIterator(); !it->isDone(); it->next()) {
+        if (it->currentItem()->id() == id) return it->currentItem();
+        if (!it->currentItem()->createIterator()->isDone()) return it->currentItem()->getNodeById(id);
+      }throw string("Expected get node but node not found.");
     }
 
     void deleteNodeById(string id) {
-      for (Iterator* it = new NodeIterator<list<Node*>::iterator>(_nodes.begin(), _nodes.end()); !it->isDone(); it->next()) {
-            if (it->currentItem()->id() == id) {
-                _nodes.remove(it->currentItem());
-                return;
-            }
-            Iterator* ita = it->currentItem()->createIterator();
-            if (!ita->isDone()) {
-                try {
-                    it->currentItem()->deleteNodeById(id);
-                    return;
-                }catch (string e) {
-                }
-            }
-        }
-        throw string("Expected delete node but node not found.");
-
+      for (Iterator* it = createIterator(); !it->isDone(); it->next()) {
+        if (it->currentItem()->id() == id) return _nodes.remove(it->currentItem());
+        if (!it->currentItem()->createIterator()->isDone()) return it->currentItem()->deleteNodeById(id);
+      }throw string("Expected delete node but node not found.");
     }
+
 private:
     list<Node*> _nodes;
     string _path, _name;
