@@ -1,0 +1,18 @@
+﻿  biological.cpp
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(13,18): error C2039: 'id': 並非 'std' 的成員
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\predefined C++ types (compiler internal)(417): message : 請參閱 'std' 的宣告
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(13,12): error C2061: 語法錯誤: 識別項 'id'
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(21,12): error C3646: '_id': 未知的覆寫規範
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(21,12): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(22,14): error C3646: '_name': 未知的覆寫規範
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(22,14): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(8,105): error C2511: 'Biological::Biological(std::string,std::string,int,int,int,int)': 在 'Biological' 找不到多載成員函式
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(11): message : 請參閱 'Biological' 的宣告
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(10,3): error C2065: '_id': 未宣告的識別項
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(11,3): error C2065: '_name': 未宣告的識別項
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(12,3): error C2597: 參考非靜態成員 'Biological::_strength' 是不合法的
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(23): message : 請參閱 'Biological::_strength' 的宣告
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(13,3): error C2597: 參考非靜態成員 'Biological::_dextenity' 是不合法的
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.h(23): message : 請參閱 'Biological::_dextenity' 的宣告
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(14,3): error C2065: '_intelligence': 未宣告的識別項
+C:\Users\PlusUltra\Desktop\github_POSDHW\無聊做遊戲\game\game\src\biological.cpp(15,3): error C2065: '_lucky': 未宣告的識別項
